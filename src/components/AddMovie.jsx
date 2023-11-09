@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { SaveInStorage } from '../helpers/SaveInStorage';
 
 export const AddMovie = () => {
 
@@ -28,22 +29,7 @@ export const AddMovie = () => {
 
         setMovieState(movie);
 
-        saveInStorage(movie);
-    }
-    
-    const saveInStorage = (movie) => {
-        let movies = JSON.parse(localStorage.getItem("movies"));
-
-        if(Array.isArray(movies)) {
-            movies.push(movie);
-        }
-        else {
-            movies = [movie];
-        }
-
-        localStorage.setItem("movies", JSON.stringify(movies));
-
-        return movie;
+        SaveInStorage("movies", movie);
     }
 
   return (
