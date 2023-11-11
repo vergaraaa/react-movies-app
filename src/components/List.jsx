@@ -8,14 +8,26 @@ export const List = ({ movies, setMovies }) => {
 
   const getMovies = () => {
     let movies = JSON.parse(localStorage.getItem("movies"));
-
+    
     setMovies(movies);
+
+    return movies;
+  }
+  
+  const deleteMovie = (id) => {
+    let saveMovies = getMovies();
+    
+    let newMovies = saveMovies.filter(movie => movie.id !== parseInt(id));
+    
+    setMovies(newMovies);
+
+    localStorage.setItem("movies", JSON.stringify(newMovies));
   }
 
   return (
     <>
     {
-      movies != null 
+      (movies != null && movies.length > 0)
         ? movies.map(movie => {
             return (
               <article key={movie.id} className="movie-item">
@@ -23,7 +35,7 @@ export const List = ({ movies, setMovies }) => {
                 <p className="description">{movie.description}</p>
 
                 <button className="edit">Edit</button>
-                <button className="delete">Delete</button>
+                <button className="delete" onClick={() => deleteMovie(movie.id)}>Delete</button>
               </article>
             );
           })
