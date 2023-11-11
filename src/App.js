@@ -1,8 +1,13 @@
+import React, { useState } from 'react'
+
 import { AddMovie } from "./components/AddMovie";
 import { List } from "./components/List";
 import { Search } from "./components/Search";
 
 function App() {
+
+    const [movies, setMovies] = useState([]);
+
   return (
     <div className="layout">
         {/* HEADER */}
@@ -27,14 +32,14 @@ function App() {
         {/* PRINCIPAL CONTENT */}
         <section className="content">
             {/* movies list */}
-            <List />
+            <List movies={movies} setMovies={setMovies} />
         </section>
 
         {/* SIDE BAR */}
         <aside className="aside">
             <Search />
 
-            <AddMovie />
+            <AddMovie setMovies={setMovies} />
         </aside>
 
         {/* FOOTER */}

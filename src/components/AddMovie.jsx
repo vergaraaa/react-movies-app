@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { SaveInStorage } from '../helpers/SaveInStorage';
 
-export const AddMovie = () => {
+export const AddMovie = ({ setMovies }) => {
 
     const titleComponent = "Add movie";
 
@@ -28,8 +28,14 @@ export const AddMovie = () => {
         }
 
         setMovieState(movie);
+        
+        // main state
+        setMovies(movies => {
+            return [...movies, movie];
+        })
 
         SaveInStorage("movies", movie);
+
     }
 
   return (

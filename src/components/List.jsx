@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
-export const List = () => {
-
-  const [movies, setMovies] = useState([]);
+export const List = ({ movies, setMovies }) => {
   
   useEffect(() => {
     getMovies();
