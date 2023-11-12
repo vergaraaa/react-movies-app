@@ -162,6 +162,21 @@ input[type="button"] {
   box-shadow: 0px 0px 6px #ddd;
 }
 
+.content input[type="text"],
+.content textarea {
+  display: block;
+  margin: 0 auto;
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 5px;
+  background: #f6f7f9;
+  color: #454545;
+  width: 80%;
+  opacity: 4;
+  outline: 0;
+  border-color: transparent;
+}
+
 .aside input[type="text"],
 .aside input[type="text"],
 .aside textarea {

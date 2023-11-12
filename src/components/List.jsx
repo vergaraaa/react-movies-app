@@ -1,7 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { Edit } from './Edit';
 
 export const List = ({ movies, setMovies }) => {
   
+  const [edit, setEdit] = useState(0);
+
   useEffect(() => {
     getMovies();
   }, []);
@@ -34,8 +37,18 @@ export const List = ({ movies, setMovies }) => {
                 <h3 className="title">{movie.title}</h3>
                 <p className="description">{movie.description}</p>
 
-                <button className="edit">Edit</button>
+                <button className="edit" onClick={() => setEdit(movie.id)}>Edit</button>
                 <button className="delete" onClick={() => deleteMovie(movie.id)}>Delete</button>
+
+                {/* form to show */}
+                { edit === movie.id && (
+                  <Edit 
+                    movie={movie} 
+                    getMovies={getMovies} 
+                    setMovies={setMovies} 
+                    setEdit={setEdit}
+                  />
+                ) }
               </article>
             );
           })
