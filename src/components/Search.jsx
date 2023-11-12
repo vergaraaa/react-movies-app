@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 
 export const Search = ({movies, setMovies}) => {
 
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("");
+  const [notFound, setNotFound] = useState(false);
 
   const findMovie = e => {
     setSearch(e.target.value);
@@ -11,6 +12,10 @@ export const Search = ({movies, setMovies}) => {
 
     if(search.length <= 1 || foundMovies.length <= 0) {
       foundMovies = JSON.parse(localStorage.getItem("movies"));
+      setNotFound(true);
+    }
+    else {
+      setNotFound(false);
     }
 
     setMovies(foundMovies);
@@ -19,6 +24,9 @@ export const Search = ({movies, setMovies}) => {
   return (
     <div className="search">
         <h3 className="title">Search: {search}</h3>
+        { (notFound == true && search.length > 1) && (
+          <span className='not-found'>No movies with that title</span>
+        )}
         <form>
             <input type="text" 
               name='search' 
