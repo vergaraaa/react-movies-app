@@ -37,7 +37,7 @@ function App() {
 
         {/* SIDE BAR */}
         <aside className="aside">
-            <Search />
+            <Search movies={movies} setMovies={setMovies}/>
 
             <AddMovie setMovies={setMovies} />
         </aside>
